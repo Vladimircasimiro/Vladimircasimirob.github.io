@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Candidatura para Responsável de Turma</title>
+    <style>
+        /* Estilos para o formulário */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulário de Candidatura</h2>
+        <form id="formulario" onsubmit="enviarParaWhatsApp(); return false;">
+            
+            <!-- Informações Pessoais -->
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required>
+            <label for="curso">Curso e ano:</label>
+            <input type="text" id="curso" name="curso" required>
+            <label for="email">E-mail e/ou contato telefônico:</label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Motivação -->
+            <label for="motivacao">Por que deseja ser responsável de turma?</label>
+            <textarea id="motivacao" name="motivacao" required></textarea>
+            <label for="qualidades">Principais qualidades:</label>
+            <textarea id="qualidades" name="qualidades" required></textarea>
+
+            <!-- Experiência e Habilidades -->
+            <label for="experiencia">Experiência em liderança ou responsabilidade:</label>
+            <textarea id="experiencia" name="experiencia" required></textarea>
+            <label for="comunicacao">Habilidade de comunicação:</label>
+            <select id="comunicacao" name="comunicacao" required>
+                <option value="Boa">Boa</option>
+                <option value="Muito boa">Muito boa</option>
+                <option value="Excelente">Excelente</option>
+            </select>
+
+            <!-- Declaração de Compromisso -->
+            <p>Declaro que estou ciente das responsabilidades do cargo e disposto a cumpri-las.</p>
+            <label>
+                <input type="checkbox" name="compromisso" required> Concordo
+            </label>
+            <button type="submit">Enviar Candidatura via WhatsApp</button>
+        </form>
+    </div>
+
+    <script>
+        function enviarParaWhatsApp() {
+            // Defina o número do WhatsApp com código de país
+            const telefone = "956387079"; // Exemplo: 5511987654321 para um número no Brasil
+            const nome = document.getElementById("nome").value;
+            const idade = document.getElementById("idade").value;
+            const curso = document.getElementById("curso").value;
+            const email = document.getElementById("email").value;
+            const motivacao = document.getElementById("motivacao").value;
+            const qualidades = document.getElementById("qualidades").value;
+            const experiencia = document.getElementById("experiencia").value;
+            const comunicacao = document.getElementById("comunicacao").value;
+
+            // Mensagem para o WhatsApp formatada
+            const mensagem = `
+                *Formulário de Candidatura*\n
+                *Nome completo:* ${nome}\n
+                *Idade:* ${idade}\n
+                *Curso e ano:* ${curso}\n
+                *E-mail/Contato:* ${email}\n
+                *Motivação:* ${motivacao}\n
+                *Qualidades:* ${qualidades}\n
+                *Experiência:* ${experiencia}\n
+                *Comunicação:* ${comunicacao}
+            `;
+
+            // Criar URL para o WhatsApp e abrir em nova aba
+            const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, "_blank");
+        }
+    </script>
+</body>
+</html>
