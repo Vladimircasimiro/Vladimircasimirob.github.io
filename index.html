@@ -97,7 +97,8 @@
 
     <script>
         function enviarParaWhatsApp() {
-            // Defina o número do WhatsApp com código de país
+            
+
             const telefone = "956387079"; // Exemplo: 5511987654321 para um número no Brasil
             const nome = document.getElementById("nome").value;
             const idade = document.getElementById("idade").value;
@@ -121,7 +122,7 @@
                 *Comunicação:* ${comunicacao}
             `;
 
-            // Criar URL para o WhatsApp e abrir em nova aba
+            
             const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
             window.open(url, "_blank");
         }
